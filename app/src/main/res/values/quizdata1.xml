@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="Quiz1">Champlain Buildings</string>
+
+    <string-array name = "quiz1" >
+        <item>Question 1</item>
+    </string-array>
+
+    <string-array name="q1q1">
+        <item>Question_Text</item>
+        <item>Question_Type</item>
+        <item>Question_Hint</item>
+        <item>Correct Answer</item>
+        <item>Incorrect Answer</item>
+        <item>Incorrect Answer</item>
+        <item>Incorrect Answer</item>
+    </string-array>
+
 </resources>
