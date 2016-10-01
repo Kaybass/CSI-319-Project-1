@@ -12,6 +12,7 @@ public class MultChoiceQuestion extends Question{
 
     }
 
+    @Override
     public int checkAnswer(){
 
         return 0;

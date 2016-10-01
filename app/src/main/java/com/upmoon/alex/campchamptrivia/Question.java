@@ -13,4 +13,8 @@ public abstract class Question {
     public Question(){
 
     }
+
+    public int checkAnswer(){
+        return 0;
+    }
 }
