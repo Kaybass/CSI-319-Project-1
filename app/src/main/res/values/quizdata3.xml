@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="Quiz3">Champlain in Burlington</string>
 
+    <string-array name = "quiz3" >
+        <item>Question 1</item>
+        <item>Question 2</item>
+    </string-array>
+
+    <string-array name="q3q1">
+        <item>Question_Text</item>
+        <item>Question_Type</item>
+        <item>Question_Hint</item>
+        <item>Correct Answer</item>
+        <item>Incorrect Answer</item>
+        <item>Incorrect Answer</item>
+        <item>Incorrect Answer</item>
+    </string-array>
 
 </resources>
