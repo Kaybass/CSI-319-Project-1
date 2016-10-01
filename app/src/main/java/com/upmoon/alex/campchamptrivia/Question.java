@@ -5,4 +5,12 @@ package com.upmoon.alex.campchamptrivia;
  */
 
 public abstract class Question {
+
+    private String mQuestionText;
+
+    private int mQuestionImageID;
+
+    public Question(){
+
+    }
 }

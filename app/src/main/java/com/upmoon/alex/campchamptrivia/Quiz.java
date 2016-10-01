@@ -8,16 +8,28 @@ import java.util.ArrayList;
 
 public class Quiz {
 
-    private ArrayList mQuestions;
+    private Question mQuestions[];
 
-    private int mAssetID;
+    //private int mAssetID;
 
     private String mQuizName;
 
-    public Quiz(int quizid){
+    public Quiz(String name){
 
-        //PARSE XML HERE
+        mQuizName = name;
     }
 
+    public void setQuestions(Question questions[]){
 
+        mQuestions = questions;
+    }
+
+    public Question getQuestion(int index){
+
+        return mQuestions[index];
+    }
+
+    public String getName(){
+        return mQuizName;
+    }
 }
