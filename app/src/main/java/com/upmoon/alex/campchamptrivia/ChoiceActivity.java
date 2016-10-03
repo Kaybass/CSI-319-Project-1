@@ -1,5 +1,6 @@
 package com.upmoon.alex.campchamptrivia;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,24 +22,30 @@ public class ChoiceActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate() called");
 
         mButtons[0] = (Button)findViewById(R.id.button1);
+        mButtons[0].setText(getString(R.string.Quiz1));
         mButtons[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = QuizActivity.newIntent(ChoiceActivity.this,1);
+                startActivity(i);
             }
         });
         mButtons[1] = (Button)findViewById(R.id.button2);
+        mButtons[1].setText(getString(R.string.Quiz2));
         mButtons[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = QuizActivity.newIntent(ChoiceActivity.this,2);
+                startActivity(i);
             }
         });
         mButtons[2] = (Button)findViewById(R.id.button3);
+        mButtons[2].setText(getString(R.string.Quiz3));
         mButtons[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = QuizActivity.newIntent(ChoiceActivity.this,3);
+                startActivity(i);
             }
         });
     }

@@ -18,7 +18,8 @@ public class QuizActivity extends AppCompatActivity {
 
     private static final String TAG = "QUIZ ACTIVITY";
 
-    //
+    private static final String EXTRA_QUIZ_NUMBER =
+            "com.upmoon.alex.campchamptrivia.quiz_number";
 
     private ImageView mQuestionImage;
 
@@ -28,8 +29,10 @@ public class QuizActivity extends AppCompatActivity {
 
     private Button mNext;
 
-    private static Intent newIntent(Context packageContext){
-
+    public static Intent newIntent(Context packageContext, int quizNum){
+        Intent i = new Intent(packageContext, QuizActivity.class);
+        i.putExtra(EXTRA_QUIZ_NUMBER,quizNum);
+        return i;
     }
 
     @Override
