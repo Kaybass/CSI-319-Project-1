@@ -18,9 +18,10 @@ public class Quiz {
         mQuizName = name;
     }
 
-    public void setQuestions(Question questions[]){
+    public void setQuestions(Question questions[]) {
 
         mQuestions = questions;
+
     }
 
     public Question getQuestion(int index){
