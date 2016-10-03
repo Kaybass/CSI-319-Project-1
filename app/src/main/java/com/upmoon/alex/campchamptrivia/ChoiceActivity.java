@@ -55,10 +55,4 @@ public class ChoiceActivity extends AppCompatActivity {
         super.onDestroy();
         Log.d(TAG, "onDestroy() called");
     }
-
-
-    //create three quizes from the xml sheets, completely static all hardcoded
-    public Quiz[] generateQuizes(){ //TODO implement this
-        return new Quiz[1];
-    }
 }
