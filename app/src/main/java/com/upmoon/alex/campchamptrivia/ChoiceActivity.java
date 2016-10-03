@@ -3,6 +3,7 @@ package com.upmoon.alex.campchamptrivia;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
 public class ChoiceActivity extends AppCompatActivity {
@@ -11,13 +12,35 @@ public class ChoiceActivity extends AppCompatActivity {
 
     //
 
-    private Button mButtons[] = new Button[4];
+    private Button mButtons[] = new Button[3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choice);
         Log.d(TAG, "onCreate() called");
+
+        mButtons[0] = (Button)findViewById(R.id.button1);
+        mButtons[0].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        mButtons[1] = (Button)findViewById(R.id.button2);
+        mButtons[1].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        mButtons[2] = (Button)findViewById(R.id.button3);
+        mButtons[2].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override

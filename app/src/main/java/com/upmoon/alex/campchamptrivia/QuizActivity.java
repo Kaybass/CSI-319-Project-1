@@ -46,7 +46,7 @@ public class QuizActivity extends AppCompatActivity {
         mAnswers[2] = (RadioButton) findViewById(R.id.radioButton9);
         mAnswers[3] = (RadioButton) findViewById(R.id.radioButton10);
 
-        mNext = (Button)findViewById(R.id.button4);
+        mNext = (Button)findViewById(R.id.button5);
         mNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
