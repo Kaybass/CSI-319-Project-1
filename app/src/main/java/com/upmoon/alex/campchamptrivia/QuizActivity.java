@@ -25,7 +25,7 @@ public class QuizActivity extends AppCompatActivity {
             new MultChoiceQuestion("hahahah","poo",mAnswers3,3),
     };*/
 
-    private Question[] mQuestions;
+    private Question[] mQuestions = new Question[10];
     //private String[] mAnswers;
 
     private static final String TAG = "QUIZ ACTIVITY";
@@ -61,8 +61,7 @@ public class QuizActivity extends AppCompatActivity {
 
         // Load Quiz #EXTRA_QUIZ_NUMBER's questions into mQuestions array.
         for(int i = 1; i < 11; i++) {
-            mQuestions[i] = getQuestionByID(mQuizID, i);
-
+            mQuestions[i-1] = getQuestionByID(mQuizID, i);
         }
 
         Log.d(TAG,Integer.toString(mQuizID));
@@ -174,9 +173,9 @@ public class QuizActivity extends AppCompatActivity {
         resID = getResources().getIdentifier(correctAnswersArrayName, "array", packageName);
         mCorrectAnswerIndex = getResources().getIntArray(resID);
 
-        Log.d(TAG,Integer.toString(mCorrectAnswerIndex[questionNumber]));
+        Log.d(TAG,Integer.toString(mCorrectAnswerIndex[questionNumber-1]));
 
 
-        return new MultChoiceQuestion(mQuestionData[0], mQuestionData[1], mQuestionAnswers, mCorrectAnswerIndex[questionNumber]);
+        return new MultChoiceQuestion(mQuestionData[0], mQuestionData[1], mQuestionAnswers, mCorrectAnswerIndex[questionNumber-1]);
     }
 }
