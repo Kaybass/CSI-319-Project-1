@@ -24,6 +24,10 @@ public abstract class Question {
         return mAnswers[index];
     }
 
+    public int getAnswerIndex(){
+        return mCorrectAnswerIndex;
+    }
+
     public boolean checkAnswer(int index) {
         if (index == mCorrectAnswerIndex){
             return true;

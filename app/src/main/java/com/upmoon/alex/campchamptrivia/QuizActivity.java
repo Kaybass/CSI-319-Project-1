@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
 
-/*  private String mAnswers1[] = {"asdsad","asdasdd","asdasd","asdads"};
+  private String mAnswers1[] = {"asdsad","asdasdd","asdasd","asdads"};
     private String mAnswers2[] = {"asdasdsad","asdasasddd","asdaasdsd","asdasdads"};
     private String mAnswers3[] = {"asdsad","asdasdd","asdasd","asdads"};
 
@@ -23,9 +23,9 @@ public class QuizActivity extends AppCompatActivity {
             new MultChoiceQuestion("tendies","poo",mAnswers1,2),
             new MultChoiceQuestion("ree","poo", mAnswers2,2),
             new MultChoiceQuestion("hahahah","poo",mAnswers3,3),
-    };*/
+    };
 
-    private Question[] mQuestions;
+    //private Question[] mQuestions;
     //private String[] mAnswers;
 
     private static final String TAG = "QUIZ ACTIVITY";
@@ -41,7 +41,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private Button mNext, mHintButton;
 
-    private int mQuizID, mQuestionsCorrectCounter;
+    private int mQuizID, mQuestionsCorrectCounter = 0, mQuestionIndex;
 
     private String mHint;
 
@@ -57,13 +57,15 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
         Log.d(TAG, "onCreate() called");
 
+        mQuestionIndex = 0;
+
         mQuizID = getIntent().getIntExtra(EXTRA_QUIZ_NUMBER,0);
 
         // Load Quiz #EXTRA_QUIZ_NUMBER's questions into mQuestions array.
-        for(int i = 0; i < 10; i++) {
+        /*for(int i = 0; i < 10; i++) {
             mQuestions[i] = getQuestionByID(mQuizID + 1, i + 1);
 
-        }
+        }*/
 
         Log.d(TAG,Integer.toString(mQuizID));
 
@@ -78,10 +80,10 @@ public class QuizActivity extends AppCompatActivity {
 
         //Set up first question
 
-        mQuestionText.setText(mQuestions[0].getText());
+        mQuestionText.setText(mQuestions[mQuestionIndex].getText());
 
         mHintButton = (Button)findViewById(R.id.button6);
-        mHint = mQuestions[0].getHint();
+        mHint = mQuestions[mQuestionIndex].getHint();
         mHintButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +92,7 @@ public class QuizActivity extends AppCompatActivity {
         });
 
         for(int i = 0; i < 4; ++i){
-            mAnswers[i].setText(mQuestions[0].getAnswer(i));
+            mAnswers[i].setText(mQuestions[mQuestionIndex].getAnswer(i));
         }
 
         mNext.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +101,30 @@ public class QuizActivity extends AppCompatActivity {
                 if(mAnswers[0].isChecked() || mAnswers[1].isChecked() ||
                         mAnswers[2].isChecked() || mAnswers[3].isChecked()){
 
+                    if(mQuestionIndex < mQuestions.length - 1){
 
+                        if(mAnswers[mQuestions[mQuestionIndex].getAnswerIndex()].isChecked())
+                            mQuestionsCorrectCounter++;
+
+                        mQuestionIndex++;
+
+                        mQuestionText.setText(mQuestions[mQuestionIndex].getText());
+
+                        mHint = mQuestions[mQuestionIndex].getHint();
+
+                        for(int i = 0; i < 4; ++i){
+                            mAnswers[i].setText(mQuestions[mQuestionIndex].getAnswer(i));
+                            mAnswers[i].setChecked(false);
+                        }
+                    }
+                    else{
+                        /*
+                        *
+                        *   TODO MAKE HISCORE ACTIVITY START IT HERE
+                        *
+                        * */
+                        Toast.makeText(QuizActivity.this,"You finished with " + Integer.toString(mQuestionsCorrectCounter) + " correct, Wow!",Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else{
                     Toast.makeText(QuizActivity.this,"Pick a hecking answer dummy",Toast.LENGTH_SHORT).show();
@@ -145,7 +170,7 @@ public class QuizActivity extends AppCompatActivity {
         Log.d(TAG, "onDestroy() called");
     }
 
-    private Question getQuestionByID(int quizNumber, int questionNumber) {
+    /*private Question getQuestionByID(int quizNumber, int questionNumber) {
         String[] mQuestionData;
         String[] mQuestionAnswers;
         String packageName = getPackageName();
@@ -172,5 +197,5 @@ public class QuizActivity extends AppCompatActivity {
         Log.d(TAG,mQuestionData[3]);
 
         return new MultChoiceQuestion(mQuestionData[0], mQuestionData[1], mQuestionAnswers, Integer.parseInt(mQuestionData[3]));
-    }
+    }*/
 }
