@@ -39,9 +39,11 @@ public class QuizActivity extends AppCompatActivity {
 
     private RadioButton mAnswers[] = new RadioButton[4];
 
-    private Button mNext;
+    private Button mNext, mHintButton;
 
     private int mQuizID, mQuestionsCorrectCounter;
+
+    private String mHint;
 
     public static Intent newIntent(Context packageContext, int quizNum){
         Intent i = new Intent(packageContext, QuizActivity.class);
@@ -78,6 +80,14 @@ public class QuizActivity extends AppCompatActivity {
         mQuestionText.setText(mQuestions[0].getText());
 
         //TODO add hint
+        mHintButton = (Button)findViewById(R.id.button6);
+        mHint = mQuestions[0].getHint();
+        mHintButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(QuizActivity.this,mHint,Toast.LENGTH_SHORT).show();
+            }
+        });
 
         for(int i = 0; i < 4; ++i){
             mAnswers[i].setText(mQuestions[0].getAnswer(i));
@@ -92,7 +102,7 @@ public class QuizActivity extends AppCompatActivity {
 
                 }
                 else{
-                    Toast.makeText(QuizActivity.this,"Pick a hecking answer dummy",Toast.LENGTH_LONG).show();
+                    Toast.makeText(QuizActivity.this,"Pick a hecking answer dummy",Toast.LENGTH_SHORT).show();
                 }
             }
         });
