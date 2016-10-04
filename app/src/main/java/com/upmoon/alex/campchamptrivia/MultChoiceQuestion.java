@@ -10,13 +10,13 @@ public class MultChoiceQuestion extends Question{
 
     private String mAnswers[] = new String[4];
 
-    private int mCorrectIndex;
+    private int mCorrectAnswerIndex;
 
     public MultChoiceQuestion(String questionText, String questionHint, String[] answers, int index){
         mQuestionText = questionText;
         mQuestionHint = questionHint;
         mAnswers = answers;
-        mCorrectIndex = index;
+        mCorrectAnswerIndex = index;
     }
 
     public String getText(){ return mQuestionText; }
@@ -31,10 +31,12 @@ public class MultChoiceQuestion extends Question{
         return "";
     }
 
+
+
     @Override
     public boolean checkAnswer(int index){
 
-        if(mCorrectIndex == index){
+        if(mCorrectAnswerIndex == index){
             return true;
         }
 

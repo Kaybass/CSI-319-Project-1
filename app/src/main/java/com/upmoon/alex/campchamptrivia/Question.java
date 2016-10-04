@@ -23,6 +23,9 @@ public abstract class Question {
     public String getAnswer(int index){
         return mAnswers[index];
     }
+    public int getAnswerIndex() {
+        return mCorrectAnswerIndex;
+    }
 
     public boolean checkAnswer(int index) {
         if (index == mCorrectAnswerIndex){
