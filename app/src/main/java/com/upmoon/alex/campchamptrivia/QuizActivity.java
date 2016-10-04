@@ -26,7 +26,7 @@ public class QuizActivity extends AppCompatActivity {
     };*/
 
     private Question[] mQuestions;
-    private String[] mAnswers;
+    //private String[] mAnswers;
 
     private static final String TAG = "QUIZ ACTIVITY";
 
@@ -61,7 +61,8 @@ public class QuizActivity extends AppCompatActivity {
 
         // Load Quiz #EXTRA_QUIZ_NUMBER's questions into mQuestions array.
         for(int i = 0; i < 10; i++) {
-            mQuestions[i] = getQuestionByID(mQuizID, i);
+            mQuestions[i] = getQuestionByID(mQuizID + 1, i + 1);
+
         }
 
         Log.d(TAG,Integer.toString(mQuizID));
@@ -79,7 +80,6 @@ public class QuizActivity extends AppCompatActivity {
 
         mQuestionText.setText(mQuestions[0].getText());
 
-        //TODO add hint
         mHintButton = (Button)findViewById(R.id.button6);
         mHint = mQuestions[0].getHint();
         mHintButton.setOnClickListener(new View.OnClickListener() {
@@ -149,13 +149,28 @@ public class QuizActivity extends AppCompatActivity {
         String[] mQuestionData;
         String[] mQuestionAnswers;
         String packageName = getPackageName();
-        String questionName = "q" + quizNumber + "q" + questionNumber;
-        String answerName = questionName + "_answers";
-        int resID = getResources().getIdentifier(answerName, "string", packageName);
-        mQuestionAnswers = getResources().getStringArray(resID);
-        resID = getResources().getIdentifier(questionName, "string", packageName);
-        mQuestionData = getResources().getStringArray(resID);
 
-        return new MultChoiceQuestion(mQuestionData[0], mQuestionData[1], mQuestionAnswers, Integer.getInteger(mQuestionData[3]));
+        String questionName = "q" + quizNumber + "q" + questionNumber;
+
+        Log.d(TAG,packageName);
+
+        String answerName = questionName + "_answers";
+
+        Log.d(TAG,answerName);
+
+        int resID = QuizActivity.this.getResources().getIdentifier(answerName,"array",  packageName);
+
+        Log.d(TAG,Integer.toString(resID));
+
+        mQuestionAnswers = this.getResources().getStringArray(resID);
+
+        Log.d(TAG,mQuestionAnswers[0]);
+
+        resID = this.getResources().getIdentifier(questionName, "array", packageName);
+        mQuestionData = this.getResources().getStringArray(resID);
+
+        Log.d(TAG,mQuestionData[3]);
+
+        return new MultChoiceQuestion(mQuestionData[0], mQuestionData[1], mQuestionAnswers, Integer.parseInt(mQuestionData[3]));
     }
 }
