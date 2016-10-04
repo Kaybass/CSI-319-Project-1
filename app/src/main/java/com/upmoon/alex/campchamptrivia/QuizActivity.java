@@ -60,8 +60,8 @@ public class QuizActivity extends AppCompatActivity {
         mQuizID = getIntent().getIntExtra(EXTRA_QUIZ_NUMBER,0);
 
         // Load Quiz #EXTRA_QUIZ_NUMBER's questions into mQuestions array.
-        for(int i = 0; i < 10; i++) {
-            mQuestions[i] = getQuestionByID(mQuizID + 1, i + 1);
+        for(int i = 1; i < 11; i++) {
+            mQuestions[i] = getQuestionByID(mQuizID, i);
 
         }
 
@@ -146,31 +146,37 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private Question getQuestionByID(int quizNumber, int questionNumber) {
+        int resID;
+        int[] mCorrectAnswerIndex;
         String[] mQuestionData;
         String[] mQuestionAnswers;
+
         String packageName = getPackageName();
-
         String questionName = "q" + quizNumber + "q" + questionNumber;
-
-        Log.d(TAG,packageName);
-
         String answerName = questionName + "_answers";
+        String correctAnswersArrayName = "quiz" + quizNumber + "AnswerKey";
 
+        Log.d(TAG,questionName);
+        Log.d(TAG,packageName);
         Log.d(TAG,answerName);
 
-        int resID = QuizActivity.this.getResources().getIdentifier(answerName,"array",  packageName);
+        resID = getResources().getIdentifier(answerName,"array",  packageName);
 
         Log.d(TAG,Integer.toString(resID));
 
-        mQuestionAnswers = this.getResources().getStringArray(resID);
+        mQuestionAnswers = getResources().getStringArray(resID);
 
         Log.d(TAG,mQuestionAnswers[0]);
 
-        resID = this.getResources().getIdentifier(questionName, "array", packageName);
-        mQuestionData = this.getResources().getStringArray(resID);
+        resID = getResources().getIdentifier(questionName, "array", packageName);
+        mQuestionData = getResources().getStringArray(resID);
 
-        Log.d(TAG,mQuestionData[3]);
+        resID = getResources().getIdentifier(correctAnswersArrayName, "array", packageName);
+        mCorrectAnswerIndex = getResources().getIntArray(resID);
 
-        return new MultChoiceQuestion(mQuestionData[0], mQuestionData[1], mQuestionAnswers, Integer.parseInt(mQuestionData[3]));
+        Log.d(TAG,Integer.toString(mCorrectAnswerIndex[questionNumber]));
+
+
+        return new MultChoiceQuestion(mQuestionData[0], mQuestionData[1], mQuestionAnswers, mCorrectAnswerIndex[questionNumber]);
     }
 }
