@@ -10,20 +10,25 @@ public abstract class Question {
 
     private String mAnswers[] = new String[4];
 
-    private int mCorrectIndex;
+    private int mCorrectAnswerIndex;
 
     public Question() {
 
     }
+
     public String getText(){ return mQuestionText; }
 
     public String getHint(){ return mQuestionHint; }
 
     public String getAnswer(int index){
-        return "";
+        return mAnswers[index];
     }
 
     public boolean checkAnswer(int index) {
+        if (index == mCorrectAnswerIndex){
+            return true;
+        }
+
         return false;
     }
 }
