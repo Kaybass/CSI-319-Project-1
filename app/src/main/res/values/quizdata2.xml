@@ -10,11 +10,25 @@
         <item>4</item>
     </string-array>
 
+    <string-array name="q2q1_answers">
+        <item>Question 1 Correct Answer</item>
+        <item>Question 1 Incorrect Answer</item>
+        <item>Question 1 Incorrect Answer</item>
+        <item>Question 1 Incorrect Answer</item>
+    </string-array>
+
     <string-array name="q2q2">
         <item>Question_Text</item>
         <item>Question_Hint</item>
         <item>indexQuestion_Answer</item>
         <item>4</item>
+    </string-array>
+
+    <string-array name="q2q2_answers">
+        <item>Question 2 Correct Answer</item>
+        <item>Question 2 Incorrect Answer</item>
+        <item>Question 2 Incorrect Answer</item>
+        <item>Question 2 Incorrect Answer</item>
     </string-array>
 
     <string-array name="q2q3">
@@ -24,11 +38,25 @@
         <item>4</item>
     </string-array>
 
+    <string-array name="q2q3_answers">
+        <item>Question 3 Correct Answer</item>
+        <item>Question 3 Incorrect Answer</item>
+        <item>Question 3 Incorrect Answer</item>
+        <item>Question 3 Incorrect Answer</item>
+    </string-array>
+
     <string-array name="q2q4">
         <item>Question_Text</item>
         <item>Question_Hint</item>
         <item>indexQuestion_Answer</item>
         <item>4</item>
+    </string-array>
+
+    <string-array name="q2q4_answers">
+        <item>Question 4 Correct Answer</item>
+        <item>Question 4 Incorrect Answer</item>
+        <item>Question 4 Incorrect Answer</item>
+        <item>Question 4 Incorrect Answer</item>
     </string-array>
 
     <string-array name="q2q5">
@@ -38,11 +66,25 @@
         <item>4</item>
     </string-array>
 
+    <string-array name="q2q5_answers">
+        <item>Question 5 Correct Answer</item>
+        <item>Question 5 Incorrect Answer</item>
+        <item>Question 5 Incorrect Answer</item>
+        <item>Question 5 Incorrect Answer</item>
+    </string-array>
+
     <string-array name="q2q6">
         <item>Question_Text</item>
         <item>Question_Hint</item>
         <item>indexQuestion_Answer</item>
         <item>4</item>
+    </string-array>
+
+    <string-array name="q2q6_answers">
+        <item>Question 6 Correct Answer</item>
+        <item>Question 6 Incorrect Answer</item>
+        <item>Question 6 Incorrect Answer</item>
+        <item>Question 6 Incorrect Answer</item>
     </string-array>
 
     <string-array name="q2q7">
@@ -52,11 +94,25 @@
         <item>4</item>
     </string-array>
 
+    <string-array name="q2q7_answers">
+        <item>Question 7 Correct Answer</item>
+        <item>Question 7 Incorrect Answer</item>
+        <item>Question 7 Incorrect Answer</item>
+        <item>Question 7 Incorrect Answer</item>
+    </string-array>
+
     <string-array name="q2q8">
         <item>Question_Text</item>
         <item>Question_Hint</item>
         <item>indexQuestion_Answer</item>
         <item>4</item>
+    </string-array>
+
+    <string-array name="q2q8_answers">
+        <item>Question 8 Correct Answer</item>
+        <item>Question 8 Incorrect Answer</item>
+        <item>Question 8 Incorrect Answer</item>
+        <item>Question 8 Incorrect Answer</item>
     </string-array>
 
     <string-array name="q2q9">
@@ -66,6 +122,13 @@
         <item>4</item>
     </string-array>
 
+    <string-array name="q2q9_answers">
+        <item>Question 9 Correct Answer</item>
+        <item>Question 9 Incorrect Answer</item>
+        <item>Question 9 Incorrect Answer</item>
+        <item>Question 9 Incorrect Answer</item>
+    </string-array>
+
     <string-array name="q2q10">
         <item>Question_Text</item>
         <item>Question_Hint</item>
@@ -73,47 +136,24 @@
         <item>4</item>
     </string-array>
 
-    <string-array name="quiz2_Answers">
-        <item>Question 1 Correct Answer</item>
-        <item>Question 1 Incorrect Answer</item>
-        <item>Question 1 Incorrect Answer</item>
-        <item>Question 1 Incorrect Answer</item>
-        <item>Question 2 Correct Answer</item>
-        <item>Question 2 Incorrect Answer</item>
-        <item>Question 2 Incorrect Answer</item>
-        <item>Question 2 Incorrect Answer</item>
-        <item>Question 3 Correct Answer</item>
-        <item>Question 3 Incorrect Answer</item>
-        <item>Question 3 Incorrect Answer</item>
-        <item>Question 3 Incorrect Answer</item>
-        <item>Question 4 Correct Answer</item>
-        <item>Question 4 Incorrect Answer</item>
-        <item>Question 4 Incorrect Answer</item>
-        <item>Question 4 Incorrect Answer</item>
-        <item>Question 4 Correct Answer</item>
-        <item>Question 5 Incorrect Answer</item>
-        <item>Question 5 Incorrect Answer</item>
-        <item>Question 5 Incorrect Answer</item>
-        <item>Question 6 Correct Answer</item>
-        <item>Question 6 Incorrect Answer</item>
-        <item>Question 6 Incorrect Answer</item>
-        <item>Question 6 Incorrect Answer</item>
-        <item>Question 7 Correct Answer</item>
-        <item>Question 7 Incorrect Answer</item>
-        <item>Question 7 Incorrect Answer</item>
-        <item>Question 7 Incorrect Answer</item>
-        <item>Question 8 Correct Answer</item>
-        <item>Question 8 Incorrect Answer</item>
-        <item>Question 8 Incorrect Answer</item>
-        <item>Question 8 Incorrect Answer</item>
-        <item>Question 9 Correct Answer</item>
-        <item>Question 9 Incorrect Answer</item>
-        <item>Question 9 Incorrect Answer</item>
-        <item>Question 9 Incorrect Answer</item>
+    <string-array name="q2q10_answers">
         <item>Question 10 Correct Answer</item>
         <item>Question 10 Incorrect Answer</item>
         <item>Question 10 Incorrect Answer</item>
         <item>Question 10 Incorrect Answer</item>
     </string-array>
+
+    <integer-array name="quiz2AnswerKey">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
 
 </resources>
