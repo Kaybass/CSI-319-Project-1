@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
 
-    private String mAnswers1[] = {"asdsad","asdasdd","asdasd","asdads"};
+/*  private String mAnswers1[] = {"asdsad","asdasdd","asdasd","asdads"};
     private String mAnswers2[] = {"asdasdsad","asdasasddd","asdaasdsd","asdasdads"};
     private String mAnswers3[] = {"asdsad","asdasdd","asdasd","asdads"};
 
@@ -23,7 +23,10 @@ public class QuizActivity extends AppCompatActivity {
             new MultChoiceQuestion("tendies","poo",mAnswers1,2),
             new MultChoiceQuestion("ree","poo", mAnswers2,2),
             new MultChoiceQuestion("hahahah","poo",mAnswers3,3),
-    };
+    };*/
+
+    private Question[] mQuestions;
+    private String[] mAnswers;
 
     private static final String TAG = "QUIZ ACTIVITY";
 
@@ -53,6 +56,11 @@ public class QuizActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate() called");
 
         mQuizID = getIntent().getIntExtra(EXTRA_QUIZ_NUMBER,0);
+
+        // Load Quiz #EXTRA_QUIZ_NUMBER's questions into mQuestions array.
+        for(int i = 0; i < 10; i++) {
+            mQuestions[i] = getQuestionByID(mQuizID, i);
+        }
 
         Log.d(TAG,Integer.toString(mQuizID));
 
@@ -125,5 +133,19 @@ public class QuizActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "onDestroy() called");
+    }
+
+    private Question getQuestionByID(int quizNumber, int questionNumber) {
+        String[] mQuestionData;
+        String[] mQuestionAnswers;
+        String packageName = getPackageName();
+        String questionName = "q" + quizNumber + "q" + questionNumber;
+        String answerName = questionName + "_answers";
+        int resID = getResources().getIdentifier(answerName, "string", packageName);
+        mQuestionAnswers = getResources().getStringArray(resID);
+        resID = getResources().getIdentifier(questionName, "string", packageName);
+        mQuestionData = getResources().getStringArray(resID);
+
+        return new MultChoiceQuestion(mQuestionData[0], mQuestionData[1], mQuestionAnswers, Integer.getInteger(mQuestionData[3]));
     }
 }
