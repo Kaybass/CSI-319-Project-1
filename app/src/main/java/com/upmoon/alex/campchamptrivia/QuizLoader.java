@@ -4,7 +4,7 @@ import android.content.Context;
 
 /**
  * Created by Alex on 10/3/2016.
- */
+
 
 public class QuizLoader {
 
@@ -38,7 +38,7 @@ public class QuizLoader {
                 mQuestionArray[j] = Question(mQuestionDataArray[0], mQuestionDataArray[1], , int numAnswers)
             }
             mQuizArray[i].setQuestions(mQuestionArray);
-        } */
+        }
 
         // Temporary solution
         mQuestionDataArray = context.getResources().getStringArray(R.array.q1q1);

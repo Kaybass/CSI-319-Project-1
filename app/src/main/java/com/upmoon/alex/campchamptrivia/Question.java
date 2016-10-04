@@ -4,41 +4,26 @@ package com.upmoon.alex.campchamptrivia;
  * Created by Alex on 9/27/2016.
  */
 
-public class Question {
+public abstract class Question {
 
-    private String mQuestionText;
-    private String mQuestionHint;
-    private String mQuestionAnswerArray[];
-    private int mNumAnswers;
+    private String mQuestionText, mQuestionHint;
 
-    private int mQuestionImageID;
+    private String mAnswers[] = new String[4];
 
-    public Question(String questionText, String questionHint, String[] questionAnswers, int numAnswers) {
-        mQuestionText = questionText;
-        mQuestionHint = questionHint;
-        mNumAnswers = numAnswers;
-        for (int i = 0; i < numAnswers; i++) {
-            mQuestionAnswerArray[i] = questionAnswers[i];
-        }
+    private int mCorrectIndex;
+
+    public Question() {
+
+    }
+    public String getText(){ return mQuestionText; }
+
+    public String getHint(){ return mQuestionHint; }
+
+    public String getAnswer(int index){
+        return "";
     }
 
-    public String getQuestionText() {
-        return mQuestionText;
-    }
-
-    public int getNumAnswers() {
-        return mNumAnswers;
-    }
-
-    public String[] getAnswers() {
-        return mQuestionAnswerArray;
-    }
-
-    public String getQuestionHint() {
-        return mQuestionHint;
-    }
-
-    public int checkAnswer() {
-        return 0;
+    public boolean checkAnswer(int index) {
+        return false;
     }
 }

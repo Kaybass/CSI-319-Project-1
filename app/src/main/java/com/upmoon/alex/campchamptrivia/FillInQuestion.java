@@ -15,11 +15,5 @@ public class FillInQuestion extends Question {
 
     }
 
-    @Override
-    public int checkAnswer(){
 
-        //TODO: implment this
-
-        return 0;
-    }
 }

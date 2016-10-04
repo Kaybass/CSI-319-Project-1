@@ -17,14 +17,6 @@
         android:gravity="center"
         android:weightSum="1">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@color/colorAccent"
-            android:id="@+id/imageView2"
-            android:layout_weight="0.75"
-            android:scaleType="fitXY"/>
-
         <TextView
             android:text="TextView"
             android:layout_width="match_parent"

@@ -10,9 +10,20 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class QuizActivity extends AppCompatActivity {
+
+    private String mAnswers1[] = {"asdsad","asdasdd","asdasd","asdads"};
+    private String mAnswers2[] = {"asdasdsad","asdasasddd","asdaasdsd","asdasdads"};
+    private String mAnswers3[] = {"asdsad","asdasdd","asdasd","asdads"};
+
+    private Question mQuestions[] = {
+            new MultChoiceQuestion("tendies","poo",mAnswers1,2),
+            new MultChoiceQuestion("ree","poo", mAnswers2,2),
+            new MultChoiceQuestion("hahahah","poo",mAnswers3,3),
+    };
 
     private static final String TAG = "QUIZ ACTIVITY";
 
@@ -27,7 +38,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private Button mNext;
 
-    private int mQuizID;
+    private int mQuizID, mQuestionsCorrectCounter;
 
     public static Intent newIntent(Context packageContext, int quizNum){
         Intent i = new Intent(packageContext, QuizActivity.class);
@@ -45,7 +56,6 @@ public class QuizActivity extends AppCompatActivity {
 
         Log.d(TAG,Integer.toString(mQuizID));
 
-        mQuestionImage = (ImageView)findViewById(R.id.imageView2);
         mQuestionText  = (TextView)findViewById(R.id.textView2);
 
         mAnswers[0] = (RadioButton) findViewById(R.id.radioButton7);
@@ -54,10 +64,28 @@ public class QuizActivity extends AppCompatActivity {
         mAnswers[3] = (RadioButton) findViewById(R.id.radioButton10);
 
         mNext = (Button)findViewById(R.id.button5);
+
+        //Set up first question
+
+        mQuestionText.setText(mQuestions[0].getText());
+
+        //TODO add hint
+
+        for(int i = 0; i < 4; ++i){
+            mAnswers[i].setText(mQuestions[0].getAnswer(i));
+        }
+
         mNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(mAnswers[0].isChecked() || mAnswers[1].isChecked() ||
+                        mAnswers[2].isChecked() || mAnswers[3].isChecked()){
 
+
+                }
+                else{
+                    Toast.makeText(QuizActivity.this,"Pick a hecking answer dummy",Toast.LENGTH_LONG).show();
+                }
             }
         });
 

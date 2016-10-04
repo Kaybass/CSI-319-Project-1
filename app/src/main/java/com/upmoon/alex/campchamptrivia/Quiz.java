@@ -13,7 +13,7 @@ public class Quiz {
 
     private String mQuizName;
 
-    public Quiz(String name){
+    public Quiz(String name, Question[] questions){
 
         mQuizName = name;
     }
