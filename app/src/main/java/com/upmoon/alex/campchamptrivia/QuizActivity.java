@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -72,7 +72,7 @@ public class QuizActivity extends AppCompatActivity {
         //Set up first question
 
         mQuestionText.setText(mQuestions[mQuestionIndex].getText());
-
+        
         mQuestionImage.setImageResource(R.drawable.champlain2);
 
         mHintButton = (Button)findViewById(R.id.button6);
@@ -104,6 +104,8 @@ public class QuizActivity extends AppCompatActivity {
                         mQuestionText.setText(mQuestions[mQuestionIndex].getText());
 
                         mHint = mQuestions[mQuestionIndex].getHint();
+
+                        ((RadioGroup) findViewById(R.id.answerRadioGroup)).clearCheck();
 
                         for(int i = 0; i < 4; ++i){
                             mAnswers[i].setText(mQuestions[mQuestionIndex].getAnswer(i));
