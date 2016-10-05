@@ -46,12 +46,14 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
         Log.d(TAG, "onCreate() called");
 
+        mQuestionIndex = 0;
+
         mQuizID = getIntent().getIntExtra(EXTRA_QUIZ_NUMBER,0);
 
         // Load Quiz #EXTRA_QUIZ_NUMBER's questions into mQuestions array.
-        for(int i = 0; i < 10; i++) {
-            mQuestions[i] = getQuestionByID(mQuizID + 1, i + 1);
 
+        for(int i = 1; i < 11; i++) {
+            mQuestions[i-1] = getQuestionByID(mQuizID, i);
         }
 
         Log.d(TAG,Integer.toString(mQuizID));
@@ -156,6 +158,7 @@ public class QuizActivity extends AppCompatActivity {
         super.onDestroy();
         Log.d(TAG, "onDestroy() called");
     }
+
 
     private Question getQuestionByID(int quizNumber, int questionNumber) {
         int resID;
