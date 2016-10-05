@@ -58,6 +58,8 @@ public class QuizActivity extends AppCompatActivity {
 
         Log.d(TAG,Integer.toString(mQuizID));
 
+        mQuestionImage = (ImageView)findViewById(R.id.imageView);
+
         mQuestionText  = (TextView)findViewById(R.id.textView2);
 
         mAnswers[0] = (RadioButton) findViewById(R.id.radioButton7);
@@ -70,6 +72,8 @@ public class QuizActivity extends AppCompatActivity {
         //Set up first question
 
         mQuestionText.setText(mQuestions[mQuestionIndex].getText());
+
+        mQuestionImage.setImageResource(R.drawable.champlain2);
 
         mHintButton = (Button)findViewById(R.id.button6);
         mHint = mQuestions[mQuestionIndex].getHint();

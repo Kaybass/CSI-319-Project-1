@@ -4,21 +4,21 @@
     <string name="Quiz1">Champlain Buildings</string>
 
     <string-array name="q1q1">
-        <item>Question_Text</item> // Question Text
-        <item>Question_Hint</item> // Question Hint
+        <item>What is the newest building on campus?</item> // Question Text
+        <item>It has a glass pyramid on it</item> // Question Hint
         <item>indexQuestion_Answer</item> // Index value for the correct answer, followed by the incorrect answers, in the answers array
         <item>4</item> // Value for Number of Answers
     </string-array>
 
     <string-array name="q1q1_answers">
-        <item>Question 1 Correct Answer</item>
-        <item>Question 1 Incorrect Answer</item>
-        <item>Question 1 Incorrect Answer</item>
-        <item>Question 1 Incorrect Answer</item>
+        <item>A: CCM Building</item>
+        <item>B: West Hall</item>
+        <item>C: Stiller School of Business</item>
+        <item>D: Foster Hall</item>
     </string-array>
 
     <string-array name="q1q2">
-        <item>Question_Text</item>
+        <item></item>
         <item>Question_Hint</item>
         <item>indexQuestion_Answer</item>
         <item>4</item>

@@ -13,7 +13,7 @@ public class ChoiceActivity extends AppCompatActivity {
 
     //
 
-    private Button mButtons[] = new Button[3];
+    private Button mButtons[] = new Button[3], mHighScoreButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,13 @@ public class ChoiceActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = QuizActivity.newIntent(ChoiceActivity.this,3);
                 startActivity(i);
+            }
+        });
+        mHighScoreButton = (Button)findViewById(R.id.button10);
+        mHighScoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }
