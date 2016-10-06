@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -51,11 +52,33 @@ public class HighScoreActivity extends AppCompatActivity {
 
         mHighScores = getExistingHighScores();
 
+        // Check if the player score has made the high scores list
+        int tempHold = 0, tempHold2 = 0;
+        for(int i = 0; i < 10; i++) {
+            // If playerScore made the highScores list, bump the rest of the high scores down the list.
+            if(tempHold != 0) {
+                tempHold2 = mHighScores[i];
+                mHighScores[i] = tempHold;
+                tempHold = tempHold2;
+            } else if (mPlayerScore > mHighScores[i]) {
+                // Player has made the high scores list! Maybe a toast is in order?
+                String success = "Congratulations, you are now number " + Integer.toString(i) + " on the high score list!";
+                Toast.makeText(HighScoreActivity.this,success,Toast.LENGTH_SHORT).show();
 
+                // Replace the high score with player score.
+                tempHold = mHighScores[i];
+                mHighScores[i] = mPlayerScore;
+            } else {
+                // do nothing.
+            }
+        }
+
+        // TODO Populate GridView with mHighScores
 
         mShareScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // What does shareButton do if user has come here from ChoiceActivity instead of QuizActivity?
                 String mShareMessage = "I just scored a " + Integer.toString(mPlayerScore) + " on quiz " + Integer.toString(mQuizID) + " in CampChampTrivia!";
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType("text/plain"); // might be text, sound, whatever
