@@ -21,7 +21,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/button1"
             android:layout_weight="1"
-            android:layout_gravity="center" />
+            android:layout_gravity="left"
+            style="@style/Widget.AppCompat.Button.Colored" />
 
         <Button
             android:text="Button"
@@ -29,7 +30,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/button2"
             android:layout_weight="1"
-            android:layout_gravity="center" />
+            android:layout_gravity="right"
+            style="@style/Widget.AppCompat.Button.Colored" />
 
         <Button
             android:text="Button"
@@ -37,7 +39,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/button3"
             android:layout_weight="1"
-            android:layout_gravity="center" />
+            android:layout_gravity="left"
+            style="@style/Widget.AppCompat.Button.Colored" />
 
     </LinearLayout>
 
@@ -46,5 +49,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button10"
-        android:layout_weight="0.14" />
+        android:layout_weight="0.14"
+        style="@style/Widget.AppCompat.Button.Colored" />
 </LinearLayout>
