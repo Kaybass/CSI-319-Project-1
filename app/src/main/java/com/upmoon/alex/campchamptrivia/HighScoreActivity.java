@@ -12,7 +12,7 @@ public class HighScoreActivity extends AppCompatActivity {
 
     private int[] mHighScores = new int[10];
 
-    private int mNewScore, mQuizID;
+    private int mPlayerScore, mQuizID;
 
     private static final String TAG = "HIGH SCORE ACTIVITY";
 
@@ -39,17 +39,37 @@ public class HighScoreActivity extends AppCompatActivity {
 
         mShareScore = (Button) findViewById(R.id.shareButton);
 
+        mPlayerScore = Integer.parseInt(PLAYER_SCORE);
+
+        mQuizID = Integer.parseInt(EXTRA_QUIZ_NUMBER);
+
+
 
 
         mShareScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String mShareMessage = "I just scored a " + Integer.toString(mNewScore) + " on quiz " + Integer.toString(mQuizID) + " in CampChampTrivia!";
+                String mShareMessage = "I just scored a " + Integer.toString(mPlayerScore) + " on quiz " + Integer.toString(mQuizID) + " in CampChampTrivia!";
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType("text/plain"); // might be text, sound, whatever
                 share.putExtra(Intent.EXTRA_STREAM, mShareMessage);
                 startActivity(Intent.createChooser(share, "share"));
             }
         });
+    }
+
+    private int[] getExistingHighScores() {
+        int[] highScores = new int[10];
+
+        // Load high scores from memory.
+
+        return highScores;
+    }
+
+    private void setNewHighScore(int[] scores) {
+        for (int i = 0; i < 10; i++) {
+            // write scores[i] to memory.
+        }
+        return;
     }
 }
