@@ -53,25 +53,7 @@ public class HighScoreActivity extends AppCompatActivity {
         mHighScores = getExistingHighScores();
 
         // Check if the player score has made the high scores list
-        int tempHold = 0, tempHold2 = 0;
-        for(int i = 0; i < 10; i++) {
-            // If playerScore made the highScores list, bump the rest of the high scores down the list.
-            if(tempHold != 0) {
-                tempHold2 = mHighScores[i];
-                mHighScores[i] = tempHold;
-                tempHold = tempHold2;
-            } else if (mPlayerScore > mHighScores[i]) {
-                // Player has made the high scores list! Maybe a toast is in order?
-                String success = "Congratulations, you are now number " + Integer.toString(i) + " on the high score list!";
-                Toast.makeText(HighScoreActivity.this,success,Toast.LENGTH_SHORT).show();
-
-                // Replace the high score with player score.
-                tempHold = mHighScores[i];
-                mHighScores[i] = mPlayerScore;
-            } else {
-                // do nothing.
-            }
-        }
+        mHighScores = checkScoreIsHigh(mHighScores, mPlayerScore);
 
         // TODO Populate GridView with mHighScores
 
@@ -151,5 +133,28 @@ public class HighScoreActivity extends AppCompatActivity {
         }
 
         return;
+    }
+
+    private int[] checkScoreIsHigh(int[] highScoreArray, int score) {
+        int tempHold = 0, tempHold2 = 0;
+        for(int i = 0; i < 10; i++) {
+            // If playerScore made the highScores list, bump the rest of the high scores down the list.
+            if(tempHold != 0) {
+                tempHold2 = highScoreArray[i];
+                highScoreArray[i] = tempHold;
+                tempHold = tempHold2;
+            } else if (score > highScoreArray[i]) {
+                // Player has made the high scores list! Maybe a toast is in order?
+                String success = "Congratulations, you are now number " + Integer.toString(i) + " on the high score list!";
+                Toast.makeText(HighScoreActivity.this,success,Toast.LENGTH_SHORT).show();
+
+                // Replace the high score with player score.
+                tempHold = highScoreArray[i];
+                highScoreArray[i] = score;
+            } else {
+                // do nothing.
+            }
+        }
+        return highScoreArray;
     }
 }
