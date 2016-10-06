@@ -113,12 +113,16 @@ public class QuizActivity extends AppCompatActivity {
                         }
                     }
                     else{
+                        Toast.makeText(QuizActivity.this,"You finished with " + Integer.toString(mQuestionsCorrectCounter) + " correct, Wow!",Toast.LENGTH_SHORT).show();
                         /*
                         *
                         *   TODO MAKE HISCORE ACTIVITY START IT HERE
                         *
+                        *   // Start High Score Activity with:
+                        *   Intent i = HighScoreActivity.newIntent(ChoiceActivity.this,mQuizID, mQuestionsCorrectCounter);
+                        *   startActivity(i);
+                        *
                         * */
-                        Toast.makeText(QuizActivity.this,"You finished with " + Integer.toString(mQuestionsCorrectCounter) + " correct, Wow!",Toast.LENGTH_SHORT).show();
                     }
                 }
                 else{
