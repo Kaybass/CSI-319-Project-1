@@ -20,7 +20,7 @@ public class HighScoreActivity extends AppCompatActivity {
             "com.upmoon.alex.campchamptrivia.quiz_number";
 
     private static final String PLAYER_SCORE =
-            "com.upmoon.alex.campchamptrivia.quiz_number";
+            "com.upmoon.alex.campchamptrivia.player_score";
 
     private Button mShareScore;
 
