@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class HighScoreActivity extends AppCompatActivity {
 
@@ -92,6 +93,7 @@ public class HighScoreActivity extends AppCompatActivity {
                     if((receptacle = bufferedReader.readLine()) != null) {
                         highScores[i] = Integer.parseInt(receptacle);
                     } else {
+                        // If there are no more high scores stored in the file, load zeros into array.
                         highScores[i] = 0;
                     }
                 }
@@ -109,9 +111,22 @@ public class HighScoreActivity extends AppCompatActivity {
 
     private void setHighScores(int[] scores) {
         FileOutputStream fos;
-        for (int i = 0; i < 10; i++) {
-            // write scores[i] to memory.
+
+        // High scores are stored in a file highScores.txt
+        String FILENAME = "highScores";
+
+        try {
+            fos = new FileOutputStream(FILENAME);
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fos);
+            for (int i = 0; i < 10; i++) {
+                // write scores[i] to memory.
+                outputStreamWriter.write(scores[i]);
+            }
+            outputStreamWriter.close();
+        } catch (Exception exception) {
+            Log.d(TAG, "Error: Unable to save high scores.");
         }
+
         return;
     }
 }
