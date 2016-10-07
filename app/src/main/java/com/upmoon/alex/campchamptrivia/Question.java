@@ -10,7 +10,7 @@ public abstract class Question {
 
     private String mAnswers[] = new String[4];
 
-    private int mCorrectAnswerIndex;
+    private int mCorrectAnswerIndex, mImageResID;
 
     public Question() {
 
@@ -26,6 +26,7 @@ public abstract class Question {
     public int getAnswerIndex() {
         return mCorrectAnswerIndex;
     }
+    public int getResID(){ return mImageResID; }
 
     public boolean checkAnswer(int index) {
         if (index == mCorrectAnswerIndex){

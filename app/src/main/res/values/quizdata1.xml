@@ -131,8 +131,8 @@
 
     <string-array name="q1q10">
         <item>Which of the following buildings do you have to go outside to access from the Bookstore?</item>
-        <item>Question_Hint</item>
-        <item></item>
+        <item>Walk there and try it yourself</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 

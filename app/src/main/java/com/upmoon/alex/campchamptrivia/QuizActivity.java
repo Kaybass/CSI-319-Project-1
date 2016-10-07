@@ -2,6 +2,7 @@ package com.upmoon.alex.campchamptrivia;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,7 +37,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private String mHint;
 
-    private Boolean mDoneFlag = false;
+    private Boolean mDoneFlag = false, mHintFlag = false;
 
     public static Intent newIntent(Context packageContext, int quizNum){
         Log.d(TAG, "Don't call me brev");
@@ -118,14 +119,21 @@ public class QuizActivity extends AppCompatActivity {
 
         mQuestionText.setText(mQuestions[mQuestionIndex].getText());
 
-        mQuestionImage.setImageResource(R.drawable.champlain2);
-
+        mQuestionImage.setImageResource(mQuestions[mQuestionIndex].getResID());
         mHintButton = (Button)findViewById(R.id.button6);
+
         mHint = mQuestions[mQuestionIndex].getHint();
+
         mHintButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(QuizActivity.this,mHint,Toast.LENGTH_SHORT).show();
+                if (!mHintFlag){
+                    Toast.makeText(QuizActivity.this,mHint,Toast.LENGTH_SHORT).show();
+                    mHintFlag = true;
+                }
+                else{
+                    Toast.makeText(QuizActivity.this,"No more than one hint per quiz :P",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -147,6 +155,8 @@ public class QuizActivity extends AppCompatActivity {
                         mQuestionIndex++;
 
                         mQuestionText.setText(mQuestions[mQuestionIndex].getText());
+
+                        mQuestionImage.setImageResource(mQuestions[mQuestionIndex].getResID());
 
                         mHint = mQuestions[mQuestionIndex].getHint();
 
@@ -180,10 +190,10 @@ public class QuizActivity extends AppCompatActivity {
 
 
     private Question getQuestionByID(int quizNumber, int questionNumber) {
-        int resID;
-        int[] mCorrectAnswerIndex;
-        String[] mQuestionData;
-        String[] mQuestionAnswers;
+        int resID, imageres;
+        int CorrectAnswerIndex;
+        String[] QuestionData;
+        String[] QuestionAnswers;
 
         String packageName = getPackageName();
         String questionName = "q" + quizNumber + "q" + questionNumber;
@@ -192,14 +202,20 @@ public class QuizActivity extends AppCompatActivity {
 
         resID = getResources().getIdentifier(answerName,"array",  packageName);
 
-        mQuestionAnswers = getResources().getStringArray(resID);
+        QuestionAnswers = getResources().getStringArray(resID);
 
         resID = getResources().getIdentifier(questionName, "array", packageName);
-        mQuestionData = getResources().getStringArray(resID);
+        QuestionData = getResources().getStringArray(resID);
 
         resID = getResources().getIdentifier(correctAnswersArrayName, "array", packageName);
-        mCorrectAnswerIndex = getResources().getIntArray(resID);
+        CorrectAnswerIndex = getResources().getIntArray(resID)[questionNumber -1];
 
-        return new MultChoiceQuestion(mQuestionData[0], mQuestionData[1], mQuestionAnswers, mCorrectAnswerIndex[questionNumber-1]);
+        imageres = getResources().getIdentifier(QuestionData[2],"drawable",packageName);
+
+        if(imageres == 0){
+            imageres = R.drawable.champlain2;
+        }
+
+        return new MultChoiceQuestion(QuestionData[0], QuestionData[1], QuestionAnswers, CorrectAnswerIndex,imageres);
     }
 }

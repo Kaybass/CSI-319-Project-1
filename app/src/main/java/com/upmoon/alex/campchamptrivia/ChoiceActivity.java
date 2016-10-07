@@ -11,7 +11,9 @@ public class ChoiceActivity extends AppCompatActivity {
 
     private static final String TAG = "CHOICE ACTIVITY";
 
-    //
+    private static final int sQUIZONE  = 1,
+                            sQUIZTWO   = 2,
+                            sQUIZTHREE = 3;
 
     private Button mButtons[] = new Button[3], mHighScoreButton;
 
@@ -21,30 +23,30 @@ public class ChoiceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_choice);
         Log.d(TAG, "onCreate() called");
 
-        mButtons[0] = (Button)findViewById(R.id.button1);
-        mButtons[0].setText(getString(R.string.Quiz1));
-        mButtons[0].setOnClickListener(new View.OnClickListener() {
+        mButtons[sQUIZONE - 1] = (Button)findViewById(R.id.button1);
+        mButtons[sQUIZONE - 1].setText(getString(R.string.Quiz1));
+        mButtons[sQUIZONE - 1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = QuizActivity.newIntent(ChoiceActivity.this,1);
+                Intent i = QuizActivity.newIntent(ChoiceActivity.this,sQUIZONE);
                 startActivity(i);
             }
         });
-        mButtons[1] = (Button)findViewById(R.id.button2);
-        mButtons[1].setText(getString(R.string.Quiz2));
-        mButtons[1].setOnClickListener(new View.OnClickListener() {
+        mButtons[sQUIZTWO - 1] = (Button)findViewById(R.id.button2);
+        mButtons[sQUIZTWO - 1].setText(getString(R.string.Quiz2));
+        mButtons[sQUIZTWO - 1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = QuizActivity.newIntent(ChoiceActivity.this,2);
+                Intent i = QuizActivity.newIntent(ChoiceActivity.this,sQUIZTWO);
                 startActivity(i);
             }
         });
-        mButtons[2] = (Button)findViewById(R.id.button3);
-        mButtons[2].setText(getString(R.string.Quiz3));
-        mButtons[2].setOnClickListener(new View.OnClickListener() {
+        mButtons[sQUIZTHREE - 1] = (Button)findViewById(R.id.button3);
+        mButtons[sQUIZTHREE - 1].setText(getString(R.string.Quiz3));
+        mButtons[sQUIZTHREE - 1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = QuizActivity.newIntent(ChoiceActivity.this,3);
+                Intent i = QuizActivity.newIntent(ChoiceActivity.this,sQUIZTHREE);
                 startActivity(i);
             }
         });

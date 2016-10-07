@@ -10,13 +10,14 @@ public class MultChoiceQuestion extends Question{
 
     private String mAnswers[] = new String[4];
 
-    private int mCorrectAnswerIndex;
+    private int mCorrectAnswerIndex, mImageResID;
 
-    public MultChoiceQuestion(String questionText, String questionHint, String[] answers, int index){
+    public MultChoiceQuestion(String questionText, String questionHint, String[] answers, int index, int res){
         mQuestionText = questionText;
         mQuestionHint = questionHint;
         mAnswers = answers;
         mCorrectAnswerIndex = index;
+        mImageResID = res;
     }
 
     public String getText(){ return mQuestionText; }
@@ -31,7 +32,13 @@ public class MultChoiceQuestion extends Question{
         return "";
     }
 
+    @Override
+    public int getAnswerIndex() {
+        return mCorrectAnswerIndex;
+    }
 
+    @Override
+    public int getResID() { return mImageResID; }
 
     @Override
     public boolean checkAnswer(int index){
