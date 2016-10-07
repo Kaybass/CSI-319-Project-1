@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -125,16 +126,22 @@ public class HighScoreActivity extends AppCompatActivity {
         mSubmitScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userReport;
-                if(checkScoreIsHigh()) {
-                    userReport = "Great job, You got a new high score!";
+                String userReport, userName;
+                userName = mNameField.getText().toString();
+                if(userName != null) {
+                    int highScoreNumber = checkScoreIsHigh(mPlayerScore, mQuizID, userName);
+                    if (highScoreNumber == 0) {
+                        userReport = "You didn't beat any high score, study your CampChamp trivia!";
+                    } else {
+                        userReport = "Great job, you are now " + highScoreNumber + " in the high scores!";
+                    }
+                    mNameField.setVisibility(View.GONE);
+                    mSubmitScore.setVisibility(View.GONE);
+                    mHighScoreSubmitted.setText(userReport);
+                    populateGridView();
                 } else {
-                    userReport = "You didn't beat any high score, study your CampChamp trivia!";
+                    Toast.makeText(HighScoreActivity.this,"You didn't enter a user name!",Toast.LENGTH_SHORT).show();
                 }
-                mNameField.setVisibility(View.GONE);
-                mSubmitScore.setVisibility(View.GONE);
-                mHighScoreSubmitted.setText(userReport);
-                populateGridView();
             }
         });
     }
@@ -268,15 +275,15 @@ public class HighScoreActivity extends AppCompatActivity {
         return;
     }
 
-    private boolean checkScoreIsHigh(int score, int quizID, String userName) {
+    private int checkScoreIsHigh(int score, int quizID, String userName) {
         Log.d(TAG, "checkScoreIsHigh has been called. -------------");
-        boolean highScore = false;
+        int highScoreNumber = 0;
         int tempScore, tempQuizNumber;
         String tempName;
         for(int i = 0; i < 10; i++) {
             // If playerScore made the highScores list, bump the rest of the high scores down the list.
             if (score >= mHighScores[quizID][i]) {
-                if(highScore == false) { highScore = true; }
+                if(highScoreNumber == 0) { highScoreNumber = i + 1; }
 
                 tempScore = mHighScores[quizID][i];
                 tempName = mHighScoreOwners[quizID][i];
@@ -291,7 +298,7 @@ public class HighScoreActivity extends AppCompatActivity {
                 quizID = tempQuizNumber;
             }
         }
-        return highScore;
+        return highScoreNumber;
     }
 
     private void populateGridView(){
@@ -300,7 +307,7 @@ public class HighScoreActivity extends AppCompatActivity {
         // Load highScores array into String array of text values to be used in GridView
         String[] highScoreLabels = new String[10];
         for(int i = 0; i < 10; i++) {
-            highScoreLabels[i] = Integer.toString((i+1)) + ": " + mHighScoreOwners[mQuizID][i] + Integer.toString(mHighScores[mQuizID][i]);
+            highScoreLabels[i] = Integer.toString((i+1)) + ": " + mHighScoreOwners[mQuizID][i] + "\nScore: "+ Integer.toString(mHighScores[mQuizID][i]);
         }
 
         // Populate a List from string array elements
