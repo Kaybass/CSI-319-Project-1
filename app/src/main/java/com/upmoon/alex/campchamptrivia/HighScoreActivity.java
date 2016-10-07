@@ -26,11 +26,9 @@ import java.util.Random;
 
 public class HighScoreActivity extends AppCompatActivity {
 
-    private int[][] mHighScores = new int[3][10];
+    private int[] mHighScores = new int[10];
 
-    private String[][] mHighScoreOwners = new String[3][10];
-
-    private int[][] mHighScoreQuizNumbers = new int[3][10];
+    private String[] mHighScoreOwners = new String[10];
 
     private int mPlayerScore, mQuizID;
 
@@ -49,7 +47,7 @@ public class HighScoreActivity extends AppCompatActivity {
     private TextView mHighScoreLabel, mHighScoreSubmitted;
     private Random mGen = new Random(SystemClock.elapsedRealtimeNanos());
 
-    private String mPlayerName = "Player:" + Integer.toString(mGen.nextInt(101));
+    private String mPlayerName = "Player" + Integer.toString(mGen.nextInt(101));
 
     public static Intent quizIntent(Context packageContext, int quizNum, int playerScore){
         Log.d(TAG,"CALLED");
@@ -64,7 +62,6 @@ public class HighScoreActivity extends AppCompatActivity {
         Log.d(TAG,"CALLED");
         Intent i = new Intent(packageContext, HighScoreActivity.class);
         i.putExtra(EXTRE_QUIZ_NUMBER,quizNum);
-        i.putExtra(EXTRA_PLAYER_SCORE,-1); // Set playerScore = 0 if HighScoreActivity is called from ChoiceActivity, so share score button will be hidden.
         return i;
     }
 
@@ -80,7 +77,7 @@ public class HighScoreActivity extends AppCompatActivity {
         mResetScores = (Button) findViewById(R.id.resetButton);
         mSubmitScore = (Button) findViewById(R.id.submitButton);
 
-        mPlayerScore = getIntent().getIntExtra(EXTRA_PLAYER_SCORE,0);
+        mPlayerScore = getIntent().getIntExtra(EXTRA_PLAYER_SCORE,-1);
         mQuizID = getIntent().getIntExtra(EXTRE_QUIZ_NUMBER,0);
         Log.d(TAG, Integer.toString(mQuizID));
 
@@ -92,7 +89,7 @@ public class HighScoreActivity extends AppCompatActivity {
 
         getExistingHighScores();
 
-        if (mQuizID != -1) { // If mPlayerScore is -1, then the activity has been started from ChoiceActivity and there is no need to create a way for the user to share their high score
+        if (mPlayerScore != -1) { // If mPlayerScore is -1, then the activity has been started from ChoiceActivity and there is no need to create a way for the user to share their high score
 
             // Populate GridView with mHighScores
             populateGridView();
@@ -103,8 +100,8 @@ public class HighScoreActivity extends AppCompatActivity {
                     String mShareMessage = "I just scored a " + Integer.toString(mPlayerScore) + " on quiz " + Integer.toString(mQuizID) + " in CampChampTrivia!";
                     Intent share = new Intent(Intent.ACTION_SEND);
                     share.setType("text/plain");
-                    share.putExtra(Intent.EXTRA_STREAM, mShareMessage);
-                    startActivity(Intent.createChooser(share, "share"));
+                    share.putExtra(Intent.EXTRA_TEXT, mShareMessage);
+                    startActivity(Intent.createChooser(share, "Share my score!"));
                 }
             });
         } else {
@@ -122,8 +119,8 @@ public class HighScoreActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 for (int i = 0; i < 10; i++) {
-                    mHighScoreOwners[mQuizID][i] = "Empty.";
-                    mHighScores[mQuizID][i] = 0;
+                    mHighScoreOwners[i] = "Empty.";
+                    mHighScores[i] = 0;
                 }
                 recreate();
             }
@@ -205,7 +202,7 @@ public class HighScoreActivity extends AppCompatActivity {
         Log.d(TAG, "getExistingHighScores() called");
 
         // High scores are stored in a file highScores.txt
-        String FILENAME = "highScores";
+        String FILENAME = "highScores" + Integer.toString(mQuizID);
 
         // Try to open highScores.txt in a FileInputStream
         try {
@@ -219,20 +216,18 @@ public class HighScoreActivity extends AppCompatActivity {
                 Log.d(TAG, "Success: Data Input Stream is open.");
 
                 // Load high scores from memory.
-                for(int i = 0; i < 3; i++) {
-                    for(int j = 0; j < 10; j++) {
-                        try {
-                            mHighScoreOwners[i][j] = dis.readLine();
-                            mHighScoreQuizNumbers[i][j] = dis.readInt();
-                            mHighScores[i][j] = dis.readInt();
-                        } catch (Exception exception) {
-                            Log.d(TAG, "Unable to read data value, init with 0.");
-                            mHighScoreOwners[i][j] = "Empty.";
-                            mHighScoreQuizNumbers[i][j] = 0;
-                            mHighScores[i][j] = 0;
-                        }
-                        Log.d(TAG, "Another one! Read from memory.");
+                for(int i = 0; i < 10; i++) {
+
+                    try {
+                        mHighScoreOwners[i]= dis.readLine();
+                        mHighScores[i] = dis.readInt();
+                    } catch (Exception exception) {
+                        Log.d(TAG, "Unable to read data value, init with 0.");
+                        mHighScoreOwners[i] = "Empty.";
+                        mHighScores[i] = 0;
                     }
+                    Log.d(TAG, "Another one! Read from memory.");
+
                 }
 
                 // Close DataInputStream
@@ -249,12 +244,9 @@ public class HighScoreActivity extends AppCompatActivity {
             Log.d(TAG, error);
             // First Time, initialize zeros array.
             Log.d(TAG, "Initializing with zeros array");
-            for (int i = 0; i < 3; i++) {
-                for(int j = 0; j < 10; j++) {
-                    mHighScoreOwners[i][j] = "Empty.";
-                    mHighScoreQuizNumbers[i][j] = 0;
-                    mHighScores[i][j] = 0;
-                }
+            for (int i = 0; i < 10; i++) {
+                mHighScoreOwners[i] = "Empty";
+                mHighScores[i] = 0;
             }
         }
         return;
@@ -264,18 +256,14 @@ public class HighScoreActivity extends AppCompatActivity {
         Log.d(TAG, "setHighScores() called");
 
         // High scores are stored in a file highScores.txt
-        String FILENAME = "highScores";
+        String FILENAME = "highScores" + Integer.toString(mQuizID);
 
         try {
             FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
             DataOutputStream dos = new DataOutputStream(fos);
-            for (int i = 0; i < 3; i++) {
-                for(int j = 0; j < 10; j++) {
-                    // write scores[i][j] to memory.
-                    dos.writeBytes(mHighScoreOwners[i][j]);
-                    dos.writeInt(mHighScoreQuizNumbers[i][j]);
-                    dos.writeInt(mHighScores[i][j]);
-                }
+            for (int i = 0; i < 10; i++) {
+                dos.writeBytes(mHighScoreOwners[i]);
+                dos.writeInt(mHighScores[i]);
             }
             dos.flush();
             dos.close();
@@ -295,25 +283,22 @@ public class HighScoreActivity extends AppCompatActivity {
 
     private Boolean checkScoreIsHigh(int score, int quizID, String userName) {
         Log.d(TAG, "checkScoreIsHigh has been called. -------------");
-        int tempScore, tempQuizNumber;
+        int tempScore;
         String tempName;
         Boolean change = false;
         for(int i = 0; i < 10; i++) {
             // If playerScore made the highScores list, bump the rest of the high scores down the list.
-            if (score >= mHighScores[quizID][i]) {
+            if (score >= mHighScores[i]) {
                 change = true;
 
-                tempScore = mHighScores[quizID][i];
-                tempName = mHighScoreOwners[quizID][i];
-                tempQuizNumber = mHighScoreQuizNumbers[quizID][i];
+                tempScore = mHighScores[i];
+                tempName = mHighScoreOwners[i];
 
-                mHighScores[quizID][i] = score;
-                mHighScoreOwners[quizID][i] = userName;
-                mHighScoreQuizNumbers[quizID][i] = quizID;
+                mHighScores[i] = score;
+                mHighScoreOwners[i] = userName;
 
                 score = tempScore;
                 userName = tempName;
-                quizID = tempQuizNumber;
             }
         }
         return change;
@@ -325,7 +310,7 @@ public class HighScoreActivity extends AppCompatActivity {
         // Load highScores array into String array of text values to be used in GridView
         String[] highScoreLabels = new String[10];
         for(int i = 0; i < 10; i++) {
-            highScoreLabels[i] = Integer.toString((i+1)) + ": " + Integer.toString(mHighScores[mQuizID][i]);
+            highScoreLabels[i] = mHighScoreOwners[i] + ": " + Integer.toString(mHighScores[i]);
         }
 
         // Populate a List from string array elements
