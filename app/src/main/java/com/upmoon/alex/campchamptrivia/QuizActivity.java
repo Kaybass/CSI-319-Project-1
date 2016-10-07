@@ -21,6 +21,8 @@ public class QuizActivity extends AppCompatActivity {
 
     private static final String EXTRA_QUIZ_NUMBER =
             "com.upmoon.alex.campchamptrivia.quiz_number";
+    private static final String OUT_DONE_QUIZ =
+            "com.upmoon.alex.campchamptrivia.quiz_state";
 
     private ImageView mQuestionImage;
 
@@ -34,10 +36,53 @@ public class QuizActivity extends AppCompatActivity {
 
     private String mHint;
 
+    private Boolean mDoneFlag = false;
+
     public static Intent newIntent(Context packageContext, int quizNum){
+        Log.d(TAG, "Don't call me brev");
         Intent i = new Intent(packageContext, QuizActivity.class);
         i.putExtra(EXTRA_QUIZ_NUMBER,quizNum);
         return i;
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause() called");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume() called");
+
+
+
+        if(mDoneFlag == true)
+            finish();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart() called");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop() called");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy() called");
     }
 
     @Override
@@ -72,7 +117,7 @@ public class QuizActivity extends AppCompatActivity {
         //Set up first question
 
         mQuestionText.setText(mQuestions[mQuestionIndex].getText());
-        
+
         mQuestionImage.setImageResource(R.drawable.champlain2);
 
         mHintButton = (Button)findViewById(R.id.button6);
@@ -113,16 +158,16 @@ public class QuizActivity extends AppCompatActivity {
                         }
                     }
                     else{
+                        if(mAnswers[mQuestions[mQuestionIndex].getAnswerIndex()].isChecked())
+                            mQuestionsCorrectCounter++;
+
+                        mDoneFlag = true;
+
                         Toast.makeText(QuizActivity.this,"You finished with " + Integer.toString(mQuestionsCorrectCounter) + " correct, Wow!",Toast.LENGTH_SHORT).show();
-                        /*
-                        *
-                        *   TODO MAKE HISCORE ACTIVITY START IT HERE
-                        *
-                        *   // Start High Score Activity with:
-                        *   Intent i = HighScoreActivity.newIntent(ChoiceActivity.this,mQuizID, mQuestionsCorrectCounter);
-                        *   startActivity(i);
-                        *
-                        * */
+
+                        // Start High Score Activity
+                        Intent i = HighScoreActivity.quizIntent(QuizActivity.this,mQuizID,mQuestionsCorrectCounter);
+                        startActivity(i);
                     }
                 }
                 else{
@@ -131,42 +176,6 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d(TAG, "onPause() called");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(TAG, "onResume() called");
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d(TAG, "onStart() called");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(TAG, "onStop() called");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d(TAG, "onDestroy() called");
     }
 
 

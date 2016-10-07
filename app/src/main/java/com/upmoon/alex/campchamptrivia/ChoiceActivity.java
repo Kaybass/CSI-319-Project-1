@@ -48,11 +48,14 @@ public class ChoiceActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
         mHighScoreButton = (Button)findViewById(R.id.button10);
+
         mHighScoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent d = HighScoreActivity.choiceIntent(ChoiceActivity.this);
+                startActivity(d);
             }
         });
     }

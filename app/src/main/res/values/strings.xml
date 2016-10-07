@@ -7,5 +7,6 @@
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>
 
+    <string name="backButton">Try the CampChampTrivia Challenge!</string>
 
 </resources>

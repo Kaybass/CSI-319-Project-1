@@ -15,25 +15,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textSize="24pt"
+        android:textSize="20pt"
         android:text="High Scores"/>
     <GridView
         android:id="@+id/listHighScores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/labelHighScore"
         android:layout_centerHorizontal="true"
-        android:numColumns="2" />
+        android:numColumns="2"
+        android:layout_below="@+id/labelHighScore" />
     <TextView
         android:id="@+id/newScore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/shareButton" />
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="Reset High Scores" />
+
     <Button
         android:id="@+id/shareButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Share Your Score"/>
+        android:layout_alignParentEnd="true"
+        android:text="Share Your Score" />
 </RelativeLayout>
