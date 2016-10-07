@@ -15,8 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textSize="20pt"
-        android:text="High Scores"/>
+        android:textSize="16pt"
+        android:text="Quiz #X High Scores"/>
     <GridView
         android:id="@+id/listHighScores"
         android:layout_width="match_parent"
@@ -24,11 +24,29 @@
         android:layout_centerHorizontal="true"
         android:numColumns="2"
         android:layout_below="@+id/labelHighScore" />
+
     <TextView
         android:id="@+id/newScore"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/shareButton" />
+
+    <EditText
+        android:id="@+id/nameField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/resetButton"
+        android:layout_toStartOf="@+id/shareButton"
+        android:textAlignment="center"
+        android:text="User Name"/>
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/shareButton"
+        android:layout_alignParentEnd="true"
+        android:text="Submit Score" />
 
     <Button
         android:id="@+id/resetButton"
