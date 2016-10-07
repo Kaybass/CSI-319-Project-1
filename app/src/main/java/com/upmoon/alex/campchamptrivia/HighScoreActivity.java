@@ -2,8 +2,11 @@ package com.upmoon.alex.campchamptrivia;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,6 +22,7 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class HighScoreActivity extends AppCompatActivity {
 
@@ -32,7 +36,7 @@ public class HighScoreActivity extends AppCompatActivity {
 
     private static final String TAG = "HIGH SCORE ACTIVITY";
 
-    private static final String EXTRA_QUIZ_NUMBER =
+    private static final String EXTRE_QUIZ_NUMBER =
             "com.upmoon.alex.campchamptrivia.hsquiz_number";
 
     private static final String EXTRA_PLAYER_SCORE =
@@ -43,12 +47,15 @@ public class HighScoreActivity extends AppCompatActivity {
     private Button mShareScore, mResetScores, mSubmitScore;
 
     private TextView mHighScoreLabel, mHighScoreSubmitted;
+    private Random mGen = new Random(SystemClock.elapsedRealtimeNanos());
+
+    private String mPlayerName = "Player:" + Integer.toString(mGen.nextInt(101));
 
     public static Intent quizIntent(Context packageContext, int quizNum, int playerScore){
         Log.d(TAG,"CALLED");
 
         Intent i = new Intent(packageContext, HighScoreActivity.class);
-        i.putExtra(EXTRA_QUIZ_NUMBER,quizNum);
+        i.putExtra(EXTRE_QUIZ_NUMBER,quizNum);
         i.putExtra(EXTRA_PLAYER_SCORE, playerScore);
         return i;
     }
@@ -56,7 +63,7 @@ public class HighScoreActivity extends AppCompatActivity {
     public static Intent choiceIntent(Context packageContext, int quizNum){
         Log.d(TAG,"CALLED");
         Intent i = new Intent(packageContext, HighScoreActivity.class);
-        i.putExtra(EXTRA_QUIZ_NUMBER,quizNum);
+        i.putExtra(EXTRE_QUIZ_NUMBER,quizNum);
         i.putExtra(EXTRA_PLAYER_SCORE,-1); // Set playerScore = 0 if HighScoreActivity is called from ChoiceActivity, so share score button will be hidden.
         return i;
     }
@@ -74,7 +81,7 @@ public class HighScoreActivity extends AppCompatActivity {
         mSubmitScore = (Button) findViewById(R.id.submitButton);
 
         mPlayerScore = getIntent().getIntExtra(EXTRA_PLAYER_SCORE,0);
-        mQuizID = getIntent().getIntExtra(EXTRA_QUIZ_NUMBER,0);
+        mQuizID = getIntent().getIntExtra(EXTRE_QUIZ_NUMBER,0);
         Log.d(TAG, Integer.toString(mQuizID));
 
         mHighScoreSubmitted = (TextView) findViewById(R.id.newScore);
@@ -108,7 +115,7 @@ public class HighScoreActivity extends AppCompatActivity {
             mNameField.setVisibility(View.GONE);
 
             // Populate GridView with mHighScores
-            populateGridView(mQuizID);
+            populateGridView();
         }
 
         mResetScores.setOnClickListener(new View.OnClickListener() {
@@ -122,11 +129,29 @@ public class HighScoreActivity extends AppCompatActivity {
             }
         });
 
+        mNameField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mPlayerName = s.toString();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         mSubmitScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String userReport;
-                if(checkScoreIsHigh()) {
+
+                if(checkScoreIsHigh(mPlayerScore,mQuizID,mPlayerName)) {
                     userReport = "Great job, You got a new high score!";
                 } else {
                     userReport = "You didn't beat any high score, study your CampChamp trivia!";
@@ -268,13 +293,15 @@ public class HighScoreActivity extends AppCompatActivity {
         return;
     }
 
-    private void checkScoreIsHigh(int score, int quizID, String userName) {
+    private Boolean checkScoreIsHigh(int score, int quizID, String userName) {
         Log.d(TAG, "checkScoreIsHigh has been called. -------------");
         int tempScore, tempQuizNumber;
         String tempName;
+        Boolean change = false;
         for(int i = 0; i < 10; i++) {
             // If playerScore made the highScores list, bump the rest of the high scores down the list.
             if (score >= mHighScores[quizID][i]) {
+                change = true;
 
                 tempScore = mHighScores[quizID][i];
                 tempName = mHighScoreOwners[quizID][i];
@@ -289,7 +316,7 @@ public class HighScoreActivity extends AppCompatActivity {
                 quizID = tempQuizNumber;
             }
         }
-        return;
+        return change;
     }
 
     private void populateGridView(){

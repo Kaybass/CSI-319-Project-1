@@ -15,7 +15,7 @@ public class ChoiceActivity extends AppCompatActivity {
                             sQUIZTWO   = 2,
                             sQUIZTHREE = 3;
 
-    private Button mButtons[] = new Button[3], mHighScoreButton;
+    private Button mButtons[] = new Button[3], mHighScoreButtons[] = new Button[3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +51,30 @@ public class ChoiceActivity extends AppCompatActivity {
             }
         });
 
-        mHighScoreButton = (Button)findViewById(R.id.button10);
-
-        mHighScoreButton.setOnClickListener(new View.OnClickListener() {
+        mHighScoreButtons[sQUIZONE - 1] = (Button)findViewById(R.id.button10);
+        mHighScoreButtons[sQUIZONE - 1].setText("Q1 HS");
+        mHighScoreButtons[sQUIZONE - 1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent d = HighScoreActivity.choiceIntent(ChoiceActivity.this);
+                Intent d = HighScoreActivity.choiceIntent(ChoiceActivity.this, sQUIZONE);
+                startActivity(d);
+            }
+        });
+        mHighScoreButtons[sQUIZTWO - 1] = (Button)findViewById(R.id.button11);
+        mHighScoreButtons[sQUIZTWO - 1].setText("Q2 HS");
+        mHighScoreButtons[sQUIZTWO - 1].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent d = HighScoreActivity.choiceIntent(ChoiceActivity.this, sQUIZTWO);
+                startActivity(d);
+            }
+        });
+        mHighScoreButtons[sQUIZTHREE - 1] = (Button)findViewById(R.id.button12);
+        mHighScoreButtons[sQUIZTHREE - 1].setText("Q3 HS");
+        mHighScoreButtons[sQUIZTHREE - 1].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent d = HighScoreActivity.choiceIntent(ChoiceActivity.this, sQUIZTHREE);
                 startActivity(d);
             }
         });
