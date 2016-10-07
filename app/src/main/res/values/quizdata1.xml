@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="Quiz1">Champlain Buildings</string>
+    <string name="Quiz1">Buildings</string>
 
     <string-array name="q1q1">
         <item>What is the newest building on campus?</item> // Question Text
         <item>It has a glass pyramid on it</item> // Question Hint
-        <item>indexQuestion_Answer</item> // Index value for the correct answer, followed by the incorrect answers, in the answers array
+        <item>ImageName</item> // Image name
         <item>4</item> // Value for Number of Answers
     </string-array>
 
@@ -18,141 +18,141 @@
     </string-array>
 
     <string-array name="q1q2">
-        <item></item>
-        <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item>In which building are the administrative offices of champlain?</item>
+        <item>It has a distastefully done extension on it</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 
     <string-array name="q1q2_answers">
-        <item>Question 2 Correct Answer</item>
-        <item>Question 2 Incorrect Answer</item>
-        <item>Question 2 Incorrect Answer</item>
-        <item>Question 2 Incorrect Answer</item>
+        <item>Perry Hall</item>
+        <item>Coolidge</item>
+        <item>Wick Hall</item>
+        <item>Miller Information Commons</item>
     </string-array>
 
     <string-array name="q1q3">
-        <item>Question_Text</item>
-        <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item>Which Building is a library?</item>
+        <item>It has mad books in it</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 
     <string-array name="q1q3_answers">
-        <item>Question 3 Correct Answer</item>
-        <item>Question 3 Incorrect Answer</item>
-        <item>Question 3 Incorrect Answer</item>
-        <item>Question 3 Incorrect Answer</item>
+        <item>Finney Quad</item>
+        <item>South House</item>
+        <item>Miller Information Commons</item>
+        <item>Valcour Hall</item>
     </string-array>
 
     <string-array name="q1q4">
-        <item>Question_Text</item>
-        <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item>Which Building is full of the suffering of CCM students?</item>
+        <item>It\'s hidden from public view</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 
     <string-array name="q1q4_answers">
-        <item>Question 4 Correct Answer</item>
-        <item>Question 4 Incorrect Answer</item>
-        <item>Question 4 Incorrect Answer</item>
-        <item>Question 4 Incorrect Answer</item>
+        <item>Lakeview Hall</item>
+        <item>Butler Hall</item>
+        <item>The Barn</item>
+        <item>Stiller School of Business</item>
     </string-array>
 
     <string-array name="q1q5">
-        <item>Question_Text</item>
-        <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item>Where are the COR offices?</item>
+        <item>It\'s where the old bus stop was</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 
     <string-array name="q1q5_answers">
-        <item>Question 5 Correct Answer</item>
-        <item>Question 5 Incorrect Answer</item>
-        <item>Question 5 Incorrect Answer</item>
-        <item>Question 5 Incorrect Answer</item>
+        <item>Perry Hall</item>
+        <item>Joyce Hall</item>
+        <item>The Gym</item>
+        <item>Aiken Hall</item>
     </string-array>
 
     <string-array name="q1q6">
-        <item>Question_Text</item>
-        <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item>Where is the Wei located</item>
+        <item>Looks like a Barn</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 
     <string-array name="q1q6_answers">
-        <item>Question 6 Correct Answer</item>
-        <item>Question 6 Incorrect Answer</item>
-        <item>Question 6 Incorrect Answer</item>
-        <item>Question 6 Incorrect Answer</item>
+        <item>South House</item>
+        <item>West Hall</item>
+        <item>North House</item>
+        <item>Coolidge</item>
     </string-array>
 
     <string-array name="q1q7">
-        <item>Question_Text</item>
-        <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item>Which building has the best computers?</item>
+        <item>It\'s next to the library.</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 
     <string-array name="q1q7_answers">
-        <item>Question 7 Correct Answer</item>
-        <item>Question 7 Incorrect Answer</item>
-        <item>Question 7 Incorrect Answer</item>
-        <item>Question 7 Incorrect Answer</item>
+        <item>Perry Hall</item>
+        <item>Foster Hall</item>
+        <item>CCM</item>
+        <item>Ireland</item>
     </string-array>
 
     <string-array name="q1q8">
-        <item>Question_Text</item>
-        <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item>Where is the best coffee on campus located?</item>
+        <item>It\'s in the new Campus Store</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 
     <string-array name="q1q8_answers">
-        <item>Question 8 Correct Answer</item>
-        <item>Question 8 Incorrect Answer</item>
-        <item>Question 8 Incorrect Answer</item>
-        <item>Question 8 Incorrect Answer</item>
+        <item>Perry Hall</item>
+        <item>IDX</item>
+        <item>CCM</item>
+        <item>West Hall</item>
     </string-array>
 
     <string-array name="q1q9">
-        <item>Question_Text</item>
-        <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item>Which of the following is NOT a freshman dorm?</item>
+        <item>It\'s located next to Butler.</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 
     <string-array name="q1q9_answers">
-        <item>Question 9 Correct Answer</item>
-        <item>Question 9 Incorrect Answer</item>
-        <item>Question 9 Incorrect Answer</item>
-        <item>Question 9 Incorrect Answer</item>
+        <item>Jenson Hall</item>
+        <item>Bankus Hall</item>
+        <item>South House</item>
+        <item>Lakeview</item>
     </string-array>
 
     <string-array name="q1q10">
-        <item>Question_Text</item>
+        <item>Which of the following buildings do you have to go outside to access from the Bookstore?</item>
         <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item></item>
         <item>4</item>
     </string-array>
 
     <string-array name="q1q10_answers">
-        <item>Question 10 Correct Answer</item>
-        <item>Question 10 Incorrect Answer</item>
-        <item>Question 10 Incorrect Answer</item>
-        <item>Question 10 Incorrect Answer</item>
+        <item>IDX</item>
+        <item>Alumni Auditorium</item>
+        <item>Ireland</item>
+        <item>CCM</item>
     </string-array>
 
     <integer-array name="quiz1AnswerKey">
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
+        <item>2</item>
+        <item>2</item>
+        <item>3</item>
+        <item>1</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
         <item>0</item>
     </integer-array>
 

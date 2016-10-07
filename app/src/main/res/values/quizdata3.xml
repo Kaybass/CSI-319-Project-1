@@ -1,157 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="Quiz3">Champlain in Burlington</string>
+    <string name="Quiz3">Professors and Degrees</string>
 
     <string-array name="q3q1">
-        <item>Question_Text</item>
-        <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item>Who of the following teaches computer science?</item>
+        <item>Mac man</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 
     <string-array name="q3q1_answers">
-        <item>Question 1 Correct Answer</item>
-        <item>Question 1 Incorrect Answer</item>
-        <item>Question 1 Incorrect Answer</item>
-        <item>Question 1 Incorrect Answer</item>
+        <item>Brian Hall</item>
+        <item>Scudder</item>
+        <item>Yogesh</item>
+        <item>D. Mona</item>
     </string-array>
 
     <string-array name="q3q2">
-        <item>Question_Text</item>
-        <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item>What is the name of the business school at Champlain?</item>
+        <item>Green Mountain guy</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 
     <string-array name="q3q2_answers">
-        <item>Question 2 Correct Answer</item>
-        <item>Question 2 Incorrect Answer</item>
-        <item>Question 2 Incorrect Answer</item>
-        <item>Question 2 Incorrect Answer</item>
+        <item>Stiller School of Business</item>
+        <item>Trump School of Business</item>
+        <item>Finney School of Business</item>
+        <item>Bad School of Business</item>
     </string-array>
 
     <string-array name="q3q3">
-        <item>Question_Text</item>
+        <item>Which of the following are ITS degrees?</item>
         <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 
     <string-array name="q3q3_answers">
-        <item>Question 3 Correct Answer</item>
-        <item>Question 3 Incorrect Answer</item>
-        <item>Question 3 Incorrect Answer</item>
-        <item>Question 3 Incorrect Answer</item>
+        <item>Accounting</item>
+        <item>Emergent Media</item>
+        <item>Brian Hall</item>
+        <item>Computer Science and Innovation</item>
     </string-array>
 
     <string-array name="q3q4">
-        <item>Question_Text</item>
-        <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item>Which of the following is not a major in the game program?</item>
+        <item>You got it</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 
     <string-array name="q3q4_answers">
-        <item>Question 4 Correct Answer</item>
-        <item>Question 4 Incorrect Answer</item>
-        <item>Question 4 Incorrect Answer</item>
-        <item>Question 4 Incorrect Answer</item>
+        <item>Game Programming</item>
+        <item>Game Design</item>
+        <item>Game Art</item>
+        <item>Game Writing</item>
     </string-array>
 
     <string-array name="q3q5">
-        <item>Question_Text</item>
-        <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item>Which of the following is a specialization of CSI?</item>
+        <item>reeely</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 
     <string-array name="q3q5_answers">
-        <item>Question 5 Correct Answer</item>
-        <item>Question 5 Incorrect Answer</item>
-        <item>Question 5 Incorrect Answer</item>
-        <item>Question 5 Incorrect Answer</item>
+        <item>Meme Design</item>
+        <item>Software Engineering</item>
+        <item>Spaghetti Programming</item>
+        <item>Netflix Watching</item>
     </string-array>
 
     <string-array name="q3q6">
-        <item>Question_Text</item>
-        <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item>Who teaches the COR part of the ITS capstone?</item>
+        <item>has grey beard</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 
     <string-array name="q3q6_answers">
-        <item>Question 6 Correct Answer</item>
-        <item>Question 6 Incorrect Answer</item>
-        <item>Question 6 Incorrect Answer</item>
-        <item>Question 6 Incorrect Answer</item>
+        <item>Roshan Nemazee</item>
+        <item>Katheryn Wright</item>
+        <item>Chuck Bashaw</item>
+        <item>Brian Hall</item>
     </string-array>
 
     <string-array name="q3q7">
-        <item>Question_Text</item>
-        <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item>Which of the following is a CCM major</item>
+        <item>Think about it</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 
     <string-array name="q3q7_answers">
-        <item>Question 7 Correct Answer</item>
-        <item>Question 7 Incorrect Answer</item>
-        <item>Question 7 Incorrect Answer</item>
-        <item>Question 7 Incorrect Answer</item>
+        <item>Criminal Justice</item>
+        <item>Early Education</item>
+        <item>Creative Media</item>
+        <item>Computer Forensics</item>
     </string-array>
 
     <string-array name="q3q8">
-        <item>Question_Text</item>
-        <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item>What is the best major?</item>
+        <item>I\'m in it</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 
     <string-array name="q3q8_answers">
-        <item>Question 8 Correct Answer</item>
-        <item>Question 8 Incorrect Answer</item>
-        <item>Question 8 Incorrect Answer</item>
-        <item>Question 8 Incorrect Answer</item>
+        <item>Game Design</item>
+        <item>Computer Science</item>
+        <item>Accounting</item>
+        <item>Old Dirty Bastard</item>
     </string-array>
 
     <string-array name="q3q9">
-        <item>Question_Text</item>
-        <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item>What is the newest major at Champlain?</item>
+        <item>It\'s a fad</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 
     <string-array name="q3q9_answers">
-        <item>Question 9 Correct Answer</item>
-        <item>Question 9 Incorrect Answer</item>
-        <item>Question 9 Incorrect Answer</item>
-        <item>Question 9 Incorrect Answer</item>
+        <item>Data Analytics</item>
+        <item>Radiography</item>
+        <item>Business Administration</item>
+        <item>Filmmaking</item>
     </string-array>
 
     <string-array name="q3q10">
-        <item>Question_Text</item>
-        <item>Question_Hint</item>
-        <item>indexQuestion_Answer</item>
+        <item>Who the mobile guy tho....</item>
+        <item>DK</item>
+        <item>champlain2</item>
         <item>4</item>
     </string-array>
 
     <string-array name="q3q10_answers">
-        <item>Question 10 Correct Answer</item>
-        <item>Question 10 Incorrect Answer</item>
-        <item>Question 10 Incorrect Answer</item>
-        <item>Question 10 Incorrect Answer</item>
+        <item>David Kopec</item>
+        <item>Brian Hall</item>
+        <item>Dan Buckstein</item>
+        <item>Method Man</item>
     </string-array>
 
     <integer-array name="quiz3AnswerKey">
         <item>0</item>
         <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
+        <item>3</item>
+        <item>3</item>
+        <item>1</item>
+        <item>2</item>
+        <item>2</item>
+        <item>1</item>
         <item>0</item>
         <item>0</item>
     </integer-array>
