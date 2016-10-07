@@ -263,9 +263,11 @@ public class HighScoreActivity extends AppCompatActivity {
             DataOutputStream dos = new DataOutputStream(fos);
             for (int i = 0; i < 10; i++) {
                 dos.writeBytes(mHighScoreOwners[i]);
+                dos.writeChar('\n');
                 dos.writeInt(mHighScores[i]);
+                dos.flush();
             }
-            dos.flush();
+
             dos.close();
             Log.d(TAG, "Success: Data Output Stream is closed.");
 
