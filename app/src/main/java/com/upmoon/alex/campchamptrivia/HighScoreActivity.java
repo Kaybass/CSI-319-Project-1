@@ -108,7 +108,7 @@ public class HighScoreActivity extends AppCompatActivity {
             mNameField.setVisibility(View.GONE);
 
             // Populate GridView with mHighScores
-            populateGridView(mQuizID);
+            populateGridView();
         }
 
         mResetScores.setOnClickListener(new View.OnClickListener() {
@@ -268,13 +268,15 @@ public class HighScoreActivity extends AppCompatActivity {
         return;
     }
 
-    private void checkScoreIsHigh(int score, int quizID, String userName) {
+    private boolean checkScoreIsHigh(int score, int quizID, String userName) {
         Log.d(TAG, "checkScoreIsHigh has been called. -------------");
+        boolean highScore = false;
         int tempScore, tempQuizNumber;
         String tempName;
         for(int i = 0; i < 10; i++) {
             // If playerScore made the highScores list, bump the rest of the high scores down the list.
             if (score >= mHighScores[quizID][i]) {
+                if(highScore == false) { highScore = true; }
 
                 tempScore = mHighScores[quizID][i];
                 tempName = mHighScoreOwners[quizID][i];
@@ -289,7 +291,7 @@ public class HighScoreActivity extends AppCompatActivity {
                 quizID = tempQuizNumber;
             }
         }
-        return;
+        return highScore;
     }
 
     private void populateGridView(){
@@ -298,7 +300,7 @@ public class HighScoreActivity extends AppCompatActivity {
         // Load highScores array into String array of text values to be used in GridView
         String[] highScoreLabels = new String[10];
         for(int i = 0; i < 10; i++) {
-            highScoreLabels[i] = Integer.toString((i+1)) + ": " + Integer.toString(mHighScores[mQuizID][i]);
+            highScoreLabels[i] = Integer.toString((i+1)) + ": " + mHighScoreOwners[mQuizID][i] + Integer.toString(mHighScores[mQuizID][i]);
         }
 
         // Populate a List from string array elements
